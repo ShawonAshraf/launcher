@@ -1,6 +1,7 @@
 import {invoke} from "@tauri-apps/api/core";
 import "../App.css";
 
+
 export function FileAddForm() {
     function add_exe() {
         // @ts-ignore
@@ -11,9 +12,14 @@ export function FileAddForm() {
             return;
         }
 
-        invoke("add_executable", { name, path }).then(() => {
+        invoke("add_executable", {name, path}).then(() => {
             console.log("Added executable " + name + " at " + path);
+            // close the form
+            // @ts-ignore
+            document.getElementsByTagName("form")[0].submit();
         });
+
+
     }
 
     return (
@@ -21,6 +27,7 @@ export function FileAddForm() {
             <label>
                 Name: <input type="text" name="exe_name"/>
             </label>
+            <br/>
             <label>
                 Path: <input type="text" name="exe_path"/>
             </label>
