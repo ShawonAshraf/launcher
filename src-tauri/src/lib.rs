@@ -2,6 +2,7 @@ mod database;
 
 use crate::database::{Executable, Integration};
 use std::{path::Path, process::Command};
+use sqlite::Type::Null;
 
 /// Checks if the provided path is valid.
 ///
@@ -61,13 +62,27 @@ fn delete_executable(id: String) {
     integration.delete_exe(id);
 }
 
+/// This function adds an executable to the database.
+/// # Arguments
+/// * `name` - A string slice that holds the name of the executable.
+/// * `path` - A string slice that holds the path of the executable.
+#[tauri::command]
+fn add_executable(name: String, path: String) {
+    let integration = Integration::new("exedb.db".to_string()).unwrap();
+    let new_exe = Executable { id: None, name, path };
+    integration.add_exe(new_exe);
+}
+
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_shell::init())
         .invoke_handler(tauri::generate_handler![
-            get_executables, run_executable, delete_executable
+            get_executables, 
+            run_executable, 
+            delete_executable, 
+            add_executable
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
