@@ -1,7 +1,6 @@
 mod database;
 
 use crate::database::{Executable, Integration};
-use serde::Serialize;
 use std::{path::Path, process::Command};
 
 /// Checks if the provided path is valid.
