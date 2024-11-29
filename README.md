@@ -1,7 +1,22 @@
-# Tauri + React + Typescript
+# launcher
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+> A barebones application launcher for Windows, built with Tauri + React.
 
-## Recommended IDE Setup
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+## Should you use it?
+Probably no. I happen to have a lot of legacy applications that I need to run on Windows, and I wanted a simple way to launch them. 
+It's not pretty, but it works for my use-case.
+
+## Build Instructions
+
+```bash
+npm install
+
+# for dev
+npm run tauri dev
+
+# build
+npm run tauri build
+```
+
+The built executable will be in the `src-tauri/target/release` directory.
