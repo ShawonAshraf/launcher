@@ -96,6 +96,23 @@ button {
 #addbtn {
     align-content: center;
     margin-right: auto;
+    margin-top: 1em;
+}
+
+.exe-table {
+    margin-top: 2em;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -18,7 +18,7 @@ export function Table() {
     }, []);
 
     return (
-        <table>
+        <table className={"exe-table"}>
             <th>ID</th>
             <th>Name</th>
             <th>Options</th>
