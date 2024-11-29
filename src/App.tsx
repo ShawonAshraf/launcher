@@ -1,9 +1,9 @@
-import {useState, useEffect} from "react";
+import {useEffect, useState} from "react";
 import {invoke} from "@tauri-apps/api/core";
 import "./App.css";
 
 interface Executable {
-    id: number;
+    id?: number;
     name: string;
     path: string;
 }
@@ -33,8 +33,9 @@ function App() {
                             <td>
                                 <button onClick={() => {
                                     // @ts-ignore
-                                    invoke("launch_executable", {path: executable.path});
-                                }}>Launch</button>
+                                    invoke("run_executable", {path: executable.path});
+                                }}>Launch
+                                </button>
                             </td>
                         </tr>
                     ))
