@@ -7,7 +7,10 @@ function App() {
     return (
         <main className="container">
             <h1>Launcher</h1>
-            <button>Add</button>
+            <button id={"addbtn"} onClick={() => {
+                alert("Derp!");
+            }}
+            >Add</button>
             <Table/>
         </main>
     );

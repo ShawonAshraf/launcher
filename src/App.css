@@ -93,8 +93,9 @@ button {
     outline: none;
 }
 
-#greet-input {
-    margin-right: 5px;
+#addbtn {
+    align-content: center;
+    margin-right: auto;
 }
 
 @media (prefers-color-scheme: dark) {
