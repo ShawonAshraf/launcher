@@ -2,7 +2,6 @@ mod database;
 
 use crate::database::{Executable, Integration};
 use std::{path::Path, process::Command};
-use sqlite::Type::Null;
 
 /// Checks if the provided path is valid.
 ///
