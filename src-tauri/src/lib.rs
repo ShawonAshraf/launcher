@@ -42,9 +42,9 @@ fn get_executables() -> Result<Vec<Executable>, String> {
 /// * `u32` - The process ID of the spawned executable.
 #[tauri::command]
 fn run_executable(path: String) -> Result<u32, String> {
-    // if !check_for_valid_path(&path) {
-    //     return Err("The path is not valid.".to_string());
-    // }
+    if !check_for_valid_path(&path) {
+        return Err("The path is not valid.".to_string());
+    }
 
     let status = Command::new(path).spawn().expect("The executable should run.");
 
