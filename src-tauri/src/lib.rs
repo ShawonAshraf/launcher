@@ -2,6 +2,7 @@ mod database;
 
 use crate::database::{Executable, Integration};
 use std::{path::Path, process::Command};
+use dirs;
 
 /// Checks if the provided path is valid.
 ///
@@ -26,7 +27,12 @@ fn check_for_valid_path(path: &str) -> bool {
 /// * `Vec<Executable>` - A vector of `Executable` objects.
 #[tauri::command]
 fn get_executables() -> Result<Vec<Executable>, String> {
-    let integration = Integration::new("exedb.db".to_string()).unwrap();
+    // create the database file in the user document directory
+    let doc_dir = dirs::document_dir().unwrap();
+    let db_path = doc_dir.join("exedb.db")
+        .to_str().unwrap().to_string();
+    
+    let integration = Integration::new(db_path).unwrap();
     integration.create_table();
     let executables = integration.list_all();
 

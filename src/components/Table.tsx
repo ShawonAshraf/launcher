@@ -6,7 +6,7 @@ import {Executable} from "../Types.ts";
 
 export function Table() {
     const [executables, setExecutables] = useState([]);
-    const [statusId, setStatusId] = useState(-1);
+    // const [statusId, setStatusId] = useState(-1);
 
 
     useEffect(() => {
@@ -24,7 +24,7 @@ export function Table() {
                     <th>ID</th>
                     <th>Name</th>
                     <th>Actions</th>
-                    <th>Status</th>
+                    {/*<th>Status</th>*/}
                 </tr>
                 {
                     executables.map((executable: Executable) => (
@@ -35,7 +35,8 @@ export function Table() {
                                 <button onClick={() => {
                                     // @ts-ignore
                                     invoke("run_executable", {path: executable.path}).then((statusId: number) => {
-                                        setStatusId(statusId);
+                                        // setStatusId(statusId);
+                                        console.log(statusId);
                                     });
                                 }}>Launch
                                 </button>
@@ -49,7 +50,7 @@ export function Table() {
                                 >Delete
                                 </button>
                             </td>
-                            <td>{statusId}</td>
+                            {/*<td>{statusId}</td>*/}
                         </tr>
                     ))
                 }
